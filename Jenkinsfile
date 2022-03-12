@@ -4,6 +4,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 echo 'Building..'
+                bat 'docker login -u nvnbhupathi -p Bhupathi4041'
                 bat 'docker build -t nvnbhupathi/nginx_test .'
             }
         }
