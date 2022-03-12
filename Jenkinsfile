@@ -1,10 +1,9 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
     stages {
-        stage('Build Docker image') {
+        stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'docker build -t nvnbhupathi/nginx_test .'
             }
         }
         stage('Test') {
