@@ -5,7 +5,6 @@ pipeline {
             steps {
                 echo 'Building..'
                 bat 'docker build -t nvnbhupathi/nginx_test .'
-    }
             }
         }
         stage('Test') {
