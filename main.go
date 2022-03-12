@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// adder function - added
+// adder function
 func adder(a, b int) int {
 	return a + b
 }
