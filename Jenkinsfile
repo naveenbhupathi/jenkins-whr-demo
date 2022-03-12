@@ -1,11 +1,11 @@
 pipeline {
     stages {
         stage('Build') {
-        withCredentials([string(credentialsId: 'dockerpwdid', variable: 'dockerpwd')]) {
-            sh "docker login -u nvnbhupathi -p ${dockerpwd}"
-        }
-        sh 'docker build -t nvnbhupathi/nginx_test .'
             steps {
+                withCredentials([string(credentialsId: 'dockerpwdid', variable: 'dockerpwd')]) {
+                    sh "docker login -u nvnbhupathi -p ${dockerpwd}"
+                }
+                sh 'docker build -t nvnbhupathi/nginx_test .'
                 echo 'Building..'
             }
         }
