@@ -4,15 +4,16 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 echo 'Building..'
-                bat 'docker login -u nvnbhupathi -p Bhupathi4041'
+                withCredentials([string(credentialsId: 'dockerpwdid', variable: 'dockerpwd')]) {
+                    bat "docker login -u nvnbhupathi -p ${dockerpwd}"
+                }
                 bat 'docker build -t nvnbhupathi/nginx_test .'
+                echo 'CI/CD Demo $BUILD_NUMBER'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'docker --version'
-                sh 'nginx -V'
             }
         }
         stage('Deploy') {
